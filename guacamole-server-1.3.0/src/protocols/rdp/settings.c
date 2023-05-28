@@ -39,7 +39,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <winpr/custom-crypto.h>
+#include <freerdp/crypto/crypto.h>
 
 /* Client plugin arguments */
 const char* GUAC_RDP_CLIENT_ARGS[] = {
