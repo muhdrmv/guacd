@@ -24,6 +24,7 @@
 #include "resolution.h"
 #include "settings.h"
 
+#include <freerdp/tls.h>
 #include <freerdp/constants.h>
 #include <freerdp/settings.h>
 #include <freerdp/freerdp.h>
@@ -38,6 +39,8 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <string.h>
+
+#include <winpr/crypto.h>
 
 /* Client plugin arguments */
 const char* GUAC_RDP_CLIENT_ARGS[] = {
@@ -1334,6 +1337,10 @@ void guac_rdp_push_settings(guac_client* client,
                                     || guac_settings->drive_enabled
                                     || guac_settings->printing_enabled;
 
+    // Ciphers
+    rdp_settings->AllowedTlsCiphers =  WINPR_CIPHER_AES_256_CCM
+                                    || WINPR_CIPHER_AES_128_CCM
+
     /* Security */
     switch (guac_settings->security_mode) {
 
@@ -1393,6 +1400,7 @@ void guac_rdp_push_settings(guac_client* client,
             break;
 
     }
+
 
     /* Authentication */
     rdp_settings->Authentication = !guac_settings->disable_authentication;
