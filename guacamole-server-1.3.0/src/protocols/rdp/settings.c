@@ -24,7 +24,6 @@
 #include "resolution.h"
 #include "settings.h"
 
-#include <freerdp/tls.h>
 #include <freerdp/constants.h>
 #include <freerdp/settings.h>
 #include <freerdp/freerdp.h>
@@ -40,7 +39,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <winpr/crypto.h>
+#include <winpr/custom-crypto.h>
 
 /* Client plugin arguments */
 const char* GUAC_RDP_CLIENT_ARGS[] = {
