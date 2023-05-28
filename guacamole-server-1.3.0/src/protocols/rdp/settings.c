@@ -1337,9 +1337,7 @@ void guac_rdp_push_settings(guac_client* client,
                                     || guac_settings->printing_enabled;
 
     // Ciphers
-    rdp_settings->AllowedTlsCiphers =  SRTP_AEAD_AES_256_GCM
-                                    || SRTP_AEAD_AES_128_GCM;
-
+    rdp_settings->AllowedTlsCiphers =  "ECDHE-ECDSA-AES256-GCM-SHA384";
     /* Security */
     switch (guac_settings->security_mode) {
 
